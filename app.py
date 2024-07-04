@@ -16,10 +16,10 @@ merged_df = pd.merge(ot_odr_df, equipements_df, on="EQU_ID")
 print("OK")
 
 # Charger le modèle entraîné et les encodeurs
-model_ODR = joblib.load('maintenance_model_ODR.pkl')
-label_encoder = joblib.load('label_encoder.pkl')
-label_encoders = joblib.load('label_encoders.pkl')
-model_columns = joblib.load('model_columns.pkl')
+model_ODR = joblib.load('models/maintenance_model_ODR.pkl')
+label_encoder = joblib.load('models/label_encoder.pkl')
+label_encoders = joblib.load('models/label_encoders.pkl')
+model_columns = joblib.load('models/model_columns.pkl')
 
 # Créer l'application Dash
 app = dash.Dash(__name__)
