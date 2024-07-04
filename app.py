@@ -8,7 +8,6 @@ import os
 # Charger les données
 ot_odr_filename = os.path.join(".", "data/OT_ODR.csv.bz2")
 ot_odr_df = pd.read_csv(ot_odr_filename, compression="bz2", sep=";")
-
 equipements_filename = os.path.join(".", 'data/EQUIPEMENTS.csv')
 equipements_df = pd.read_csv(equipements_filename, sep=";")
 
@@ -16,18 +15,18 @@ equipements_df = pd.read_csv(equipements_filename, sep=";")
 merged_df = pd.merge(ot_odr_df, equipements_df, on="EQU_ID")
 print("OK")
 
-# Charger le modèle entraîné et le label encoder
-model_ODR = joblib.load('models/maintenance_model_ODR.pkl')
-label_encoder = joblib.load('models/label_encoder.pkl')
+# Charger le modèle entraîné et les encodeurs
+model_ODR = joblib.load('maintenance_model_ODR.pkl')
+label_encoder = joblib.load('label_encoder.pkl')
+label_encoders = joblib.load('label_encoders.pkl')
+model_columns = joblib.load('model_columns.pkl')
 
 # Créer l'application Dash
 app = dash.Dash(__name__)
 app.title = "Diagnostic de Maintenance"
 
-
 # Inclure le fichier CSS
 app.css.append_css({"external_url": "/assets/styles.css"})
-
 
 # Layout de l'application
 app.layout = html.Div([
@@ -148,6 +147,18 @@ def update_predictions(n_clicks, organe, symptome, contexte, modele, constructeu
                 'SIG_OBS': [symptome],
                 'SIG_CONTEXTE': [contexte]
             })
+
+            # Encoder les données catégorielles
+            for col, le in label_encoders.items():
+                input_data[col] = le.transform(input_data[col])
+
+            # Ajouter les colonnes manquantes avec des zéros
+            for col in model_columns:
+                if col not in input_data.columns:
+                    input_data[col] = 0
+
+            # Réorganiser les colonnes pour correspondre à l'entraînement
+            input_data = input_data[model_columns]
 
             # Faire des prédictions
             pred_odr = model_ODR.predict(input_data)
