@@ -36,19 +36,20 @@ Cette application Dash aide à prédire les actions de maintenance les plus appr
 1. Assurez-vous que les fichiers de données `OT_ODR.csv.bz2` et `EQUIPEMENTS.csv` sont présents dans le répertoire `data`.
 
 2. Entraînez le modèle et préparez les fichiers nécessaires :
-Creer un fichier 'models' pour y placer les modèles créés. 
+   
+Creer un repertoir `models` pour y placer les modèles créés. 
 
     ```sh
     python train_model.py
     ```
  
-3. Lancez l'application Dash :
+4. Lancez l'application Dash :
 
     ```sh
     python app.py
     ```
 
-4. Ouvrez votre navigateur web et allez à l'adresse suivante :
+5. Ouvrez votre navigateur web et allez à l'adresse suivante :
 
     ```
     http://127.0.0.1:8050/
