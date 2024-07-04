@@ -14,8 +14,8 @@ Cette application Dash aide à prédire les actions de maintenance les plus appr
 1. Clonez ce dépôt de code sur votre machine locale :
 
     ```sh
-    git clone https://github.com/votre-nom-utilisateur/diagnostic-maintenance-vehicules.git
-    cd diagnostic-maintenance-vehicules
+    git clone https://github.com/Unshaft/MaintCar.git
+    cd MaintCar
     ```
 
 2. Créez et activez un environnement virtuel (optionnel mais recommandé) :
