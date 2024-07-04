@@ -7,6 +7,9 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 from sklearn.impute import SimpleImputer
 import joblib
 
+# Créer le répertoire de sauvegarde des modèles s'il n'existe pas
+model_dir = 'models'
+os.makedirs(model_dir, exist_ok=True)
 
 # Charger les données
 ot_odr_filename = os.path.join(".", "data/OT_ODR.csv.bz2")
@@ -65,16 +68,18 @@ index_columns = Data_model.columns[15:49]
 selected_columns = list(index_columns)
 X = pd.concat([Data_model[selected_columns], Data_cat], axis=1)
 
-# Entraîner le modèle
+# Entraîner le modèle avec une barre de progression
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 model_ODR = DecisionTreeClassifier(random_state=42, criterion='gini', max_depth=20, min_samples_leaf=40)
+
+print("Training the model...")
 model_ODR.fit(X_train, y_train)
 
-# Sauvegarder le modèle, les encoders et les colonnes
-joblib.dump(model_ODR, 'models/maintenance_model_ODR.pkl')
-joblib.dump(label_encoder, 'models/label_encoder.pkl')
-joblib.dump(label_encoders, 'models/label_encoders.pkl')
-joblib.dump(X.columns, 'models/model_columns.pkl')
+# Sauvegarder le modèle, les encoders et les colonnes dans le répertoire de sauvegarde
+joblib.dump(model_ODR, os.path.join(model_dir, 'maintenance_model_ODR.pkl'))
+joblib.dump(label_encoder, os.path.join(model_dir, 'label_encoder.pkl'))
+joblib.dump(label_encoders, os.path.join(model_dir, 'label_encoders.pkl'))
+joblib.dump(X.columns, os.path.join(model_dir, 'model_columns.pkl'))
 
 # Évaluer le modèle
 pred_odr = model_ODR.predict(X_test)
