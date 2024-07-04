@@ -1,0 +1,181 @@
+/* styles.css */
+body {
+    font-family: 'Major Mono Display', monospace;
+    background-color: #CDEDF6;
+    color: #042A2B;
+  }
+  
+  .sidebar-custom .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .sidebar-custom .form-group > label {
+    text-align: left; /* Justifier les titres à gauche */
+    display: block; /* S'assurer que les titres prennent tout l'espace */
+  }
+  
+  .sidebar-custom .form-control {
+    border-radius: 5px;
+    border: 1px solid #042A2B;
+    background-color: white;
+    color: #042A2B;
+    font-size: 12px;  /* Taille de la police réduite */
+    font-family: Arial, sans-serif; /* Définir une police différente pour les formulaires */
+  }
+  
+  .sidebar-custom .selectize-input {
+    background-color: white;
+    color: #042A2B;
+    border: 1px solid #042A2B;
+    font-size: 12px;  /* Taille de la police réduite */
+    font-family: Arial, sans-serif; /* Définir une police différente pour les formulaires */
+  }
+  
+  .sidebar-custom .selectize-dropdown {
+    background-color: white;
+    color: #042A2B;
+    border: 1px solid #042A2B;
+    font-size: 12px;  /* Taille de la police réduite */
+    font-family: Arial, sans-serif; /* Définir une police différente pour les formulaires */
+  }
+  
+  .sidebar-custom .btn-primary, 
+  .sidebar-custom .btn-success, 
+  .sidebar-custom .btn-secondary {
+    background-color: #EF7B45;
+    border-color: #EF7B45;
+    color: white;
+    width: calc(100% - 20px); /* Ajuster la largeur à 100% moins les marges */
+    margin-bottom: 10px; /* Ajouter un espace entre les boutons */
+    padding: 10px; /* Ajuster le padding pour une meilleure apparence */
+    text-align: center; /* Centrer le texte à l'intérieur des boutons */
+    margin-left: 10px; /* Ajouter une marge à gauche pour éviter les débordements */
+    font-size: 14px; /* Taille de la police ajustée */
+    white-space: nowrap; /* Empêcher le texte de dépasser en ligne */
+    overflow: hidden; /* Masquer tout débordement */
+    text-overflow: ellipsis; /* Ajouter des points de suspension si le texte est trop long */
+    font-family: Arial, sans-serif; /* Définir une police différente pour les boutons */
+  }
+  
+  .sidebar-custom .btn-success {
+    background-color: #D84727;
+    border-color: #D84727;
+  }
+  
+  .sidebar-custom .btn-secondary {
+    background-color: #042A2B;
+    border-color: #042A2B;
+  }
+  
+  .sidebar-custom .slider {
+    background-color: #5EB1BF;
+  }
+  
+  .sidebar-custom .checkbox {
+    color: #042A2B;
+    font-family: Arial, sans-serif; /* Définir une police différente pour les checkbox */
+  }
+  
+  .box.box-primary {
+    border-top-color: #EF7B45;
+    background-color: #5EB1BF;
+    color: white;
+    font-family: Arial, sans-serif; /* Définir une police différente pour le contenu de la box */
+  }
+  
+  table.dataTable {
+    font-family: Arial, sans-serif; /* Définir une police différente pour le contenu du tableau */
+  }
+  
+  .loader-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+  }
+  
+  .loader {
+    width: 50px;
+    height: 50px;
+    display: grid;
+    border: 4px solid #0000;
+    border-radius: 50%;
+    border-color: #ccc #0000;
+    animation: l16 1s infinite linear;
+  }
+  
+  .loader::before,
+  .loader::after {
+    content: '';
+    grid-area: 1/1;
+    margin: 2px;
+    border: inherit;
+    border-radius: 50%;
+  }
+  
+  .loader::before {
+    border-color: #f03355 #0000;
+    animation: inherit;
+    animation-duration: .5s;
+    animation-direction: reverse;
+  }
+  
+  .loader::after {
+    margin: 8px;
+  }
+  
+  @keyframes l16 {
+    100% { transform: rotate(1turn); }
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .header-title {
+    font-size: 20px; /* Taille de la police plus petite */
+    font-family: 'Major Mono Display', monospace; /* Police similaire aux autres titres */
+    font-weight: 400;
+  }
+  
+  .box-title {
+    font-size: 24px; /* Taille de la police plus grande */
+    font-family: 'Major Mono Display', monospace; /* Police similaire aux autres titres */
+    font-weight: 700; /* Plus en gras */
+  }
+  
+  .page-title-container {
+    background-color: #5EB1BF; /* Couleur de fond */
+    color: #ffffff; /* Couleur du texte */
+    padding: 10px;
+    text-align: center; /* Centrer le texte */
+    border-radius: 10px; /* Coins arrondis */
+    margin-bottom: 20px; /* Espace en bas */
+  }
+  
+  .page-title {
+    margin: 0; /* Supprimer la marge par défaut */
+    font-family: 'Major Mono Display', monospace; /* Police similaire aux autres titres */
+    font-weight: 400;
+  }
+  
+  /* Styles pour la barre de défilement */
+  ::-webkit-scrollbar {
+    width: 12px;  /* Largeur de la barre de défilement */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #CDEDF6;  /* Couleur du track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #EF7B45;  /* Couleur de la poignée */
+    border-radius: 10px;  /* Bords arrondis */
+    border: 3px solid #CDEDF6;  /* Espace autour de la poignée */
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #D84727;  /* Couleur de la poignée au survol */
+  }
+  
